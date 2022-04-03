@@ -8,7 +8,7 @@ import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-import static testApi.User.createUser;
+
 
 public class Task1 extends Request {
 
@@ -46,8 +46,8 @@ public class Task1 extends Request {
 
 
     /* 1.3 Delete Users  */
-    public void deleteUser(int idUser) {
-        String URLDelete = "https://jsonplaceholder.typicode.com/users/"+idUser;
+    public void deleteUser(int userId) {
+        String URLDelete = "https://jsonplaceholder.typicode.com/users/"+userId;
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .uri(URI.create(URLDelete))
                 .header("Content-Type", "application/json")
@@ -60,9 +60,9 @@ public class Task1 extends Request {
 
     /* 1.4 Get information about all Users  */
     public void getInfAbAllUsers() {
-        String URLGet = "https://jsonplaceholder.typicode.com/users";
+        String URLGetAllUsers = "https://jsonplaceholder.typicode.com/users";
         HttpRequest httpRequest = HttpRequest.newBuilder()
-                .uri(URI.create(URLGet))
+                .uri(URI.create(URLGetAllUsers))
                 .header("Content-Type", "application/json")
                 .GET()
                 .build();
@@ -72,8 +72,8 @@ public class Task1 extends Request {
     }
 
     /* 1.5 Get information about User for id  */
-    public void getInfAbUserId(int idUser) {
-        String URLGetUserForId = "https://jsonplaceholder.typicode.com/users?id="+idUser;
+    public void getInfAbUserForId(int userId) {
+        String URLGetUserForId = "https://jsonplaceholder.typicode.com/users?id="+userId;
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .uri(URI.create(URLGetUserForId))
                 .header("Content-Type", "application/json")
@@ -85,7 +85,7 @@ public class Task1 extends Request {
     }
 
     /* 1.6 Get information about User for username  */
-    public void getInfAbUserForName(String userName) {
+    public void getInfAbUserForUserName(String userName) {
 
         String URLGetUserForUserName = "https://jsonplaceholder.typicode.com/users?username="+userName;
         HttpRequest httpRequest = HttpRequest.newBuilder()
@@ -98,10 +98,4 @@ public class Task1 extends Request {
         System.out.println("response.body().toString() = " + response.body());
     }
 
-
-    public static void main(String[] args) {
-        Task1 task1 = new Task1();
-        createUser();
-
-    }
 }
